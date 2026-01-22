@@ -165,7 +165,7 @@ for (area_i in unique(data$AREA_NAME)) {
 
   data_i <- data %>%
     filter(
-      AREA_NAME == "Birmingham",
+      AREA_NAME == area_i,
       AGE_GROUP != "All ages"
     ) %>%
     mutate(
@@ -181,7 +181,7 @@ for (area_i in unique(data$AREA_NAME)) {
     "75+" = get_pop_above(data_i, 75)
   )
   
-  data_i <- data.table::rbindlist(
+  pops_over <- data.table::rbindlist(
     data_list
   ) %>%
     filter(
